@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from sklearn.metrics import r2_score, mean_absolute_error
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestRegressor
-from components.data_ingestion import DataIngestion
-from components.data_transformation import DataTransformation
+from src.features.data_ingestion import DataIngestion
+from src.features.data_transformation import DataTransformation
 from config import app_config
 import s3fs
 

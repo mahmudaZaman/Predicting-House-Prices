@@ -1,6 +1,4 @@
-import json
-
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel
 import yaml
 from pydantic import ValidationError
 

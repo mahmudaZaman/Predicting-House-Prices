@@ -1,20 +1,11 @@
 from dataclasses import dataclass
-import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
 import os
-from components.utility import save_object, get_root_directory
 
-
-@dataclass
-class DataTransformationConfig:
-    preprocessor_obj_file_path = os.path.join(get_root_directory(), "proprocessor.pkl")
 
 class DataTransformation:
-    def __init__(self):
-        self.data_transformation_config = DataTransformationConfig()
 
     def data_transformer_pipeline(self):
         ct = ColumnTransformer(transformers=[
@@ -39,6 +30,6 @@ class DataTransformation:
         X_test = input_feature_test_df
 
         return (
-            X_train,y_train,
-            X_test,y_test,
+            X_train, y_train,
+            X_test, y_test,
         )

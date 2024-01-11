@@ -5,7 +5,7 @@ import streamlit as st
 import pickle
 import numpy as np
 
-from components.models import run_train_pipeline
+from src.models.train_model import run_train_pipeline
 
 fs = s3fs.S3FileSystem()
 
