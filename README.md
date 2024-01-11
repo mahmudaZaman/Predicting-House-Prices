@@ -2,11 +2,11 @@
 
 ## Problem Statement
 
-The Predicting House Prices project focuses on developing an accurate model to predict house prices based on essential features like square footage, the number of bedrooms, and location. This project empowers homebuyers, real estate professionals, and investors with valuable insights for making informed property-related decisions.
+The Predicting House Prices project is dedicated to creating a precise model for predicting house prices, utilizing critical features such as square Bedroom count, Living space etc. This initiative aims to empower homebuyers, real estate professionals, and investors by providing them with valuable insights, enabling them to make well-informed decisions in the realm of property transactions.
 
 ## Dataset
 
-In this project, I have employed the "Chicago House Price" dataset sourced from Kaggle, encompassing crucial information such as Price, Bedroom count, Living Space, Room details, Lot specifications, Tax data, Bathroom count, and Garage information. The diverse range of features in this dataset forms the basis for training and validating our house price prediction model.
+In this project, I have employed the "Chicago House Price" dataset sourced from Kaggle, encompassing crucial information such as Price, Bedroom count, Living space, Room details, Lot specifications, Tax data, Bathroom count, and Garage information. The diverse range of features in this dataset forms the basis for training and validating our house price prediction model.
 
 ## Models
 
