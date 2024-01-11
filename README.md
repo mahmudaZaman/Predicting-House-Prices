@@ -25,6 +25,8 @@ To explore this project and its codebase, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Review the project code and documentation to gain insights into the model development process and AWS integration.
+   - pip install -r requirements.txt
+   - streamlit run main.py
 3. Feel free to reach out if you have any questions or are interested in collaborating further.
 
 ## Why This Project Matters
