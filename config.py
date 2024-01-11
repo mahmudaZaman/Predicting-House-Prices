@@ -1,17 +1,34 @@
+import json
+
+from pydantic import BaseModel, ConfigDict
 import yaml
+from pydantic import ValidationError
 
 
-class Config:
-    _config = None
+class FilesConfig(BaseModel):
+    raw_data: str
+    raw_data_pkl: str
+    train_data: str
+    test_data: str
+    output_model_pkl: str
 
-    @classmethod
-    def load_config(cls, file_path='config.yaml'):
-        if not cls._config:
-            try:
-                with open(file_path, 'r') as file:
-                    cls._config = yaml.safe_load(file)
-            except FileNotFoundError:
-                print(f"Error: Config file '{file_path}' not found.")
-            except yaml.YAMLError as e:
-                print(f"Error parsing YAML file: {e}")
-        return cls._config
+
+class StorageConfig(BaseModel):
+    bucket_name: str
+    files: FilesConfig
+
+
+class AppConfig(BaseModel):
+    storage: StorageConfig
+
+
+# Load YAML content
+with open('config.yaml', 'r') as file:
+    yaml_data = yaml.safe_load(file)
+# Parse YAML data using pydantic
+try:
+    app_config = AppConfig.model_validate(yaml_data)
+    print(app_config.storage)
+
+except ValidationError as e:
+    print(f"Validation error: {e}")

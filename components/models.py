@@ -5,22 +5,16 @@ from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestRegressor
 from components.data_ingestion import DataIngestion
 from components.data_transformation import DataTransformation
-from config import Config
+from config import app_config
 import s3fs
-
-cfg = Config.load_config()
-storage_config = cfg["storage"]
-file_paths = storage_config["files"]
-bucket_name = storage_config["bucket_name"]
 
 fs = s3fs.S3FileSystem()
 
 
 @dataclass
 class ModelTrainerConfig:
-    trained_model_path = file_paths["model_pkl"]
-    trained_model_uri: str = f"s3://{bucket_name}/{trained_model_path}"
-    # trained_model_file_path = os.path.join(get_root_directory(), "model.pkl")
+    trained_model_path = app_config.storage.files.output_model_pkl
+    trained_model_uri: str = f"s3://{app_config.storage.bucket_name}/{trained_model_path}"
 
 
 class ModelTrainer:

@@ -1,29 +1,19 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
-from config import Config
 
-cfg = Config.load_config()
-storage_config = cfg["storage"]
-file_paths = storage_config["files"]
-bucket_name = storage_config["bucket_name"]
+from config import app_config
 
 
 @dataclass
 class DataIngestionConfig:
-    raw_data_path = file_paths["raw_data"]
-    raw_data_pkl_path = file_paths["raw_data_pkl"]
-    train_data_path = file_paths["train_data"]
-    test_data_path = file_paths["test_data"]
-
-    raw_data_uri: str = f"s3://{bucket_name}/{raw_data_path}"
+    raw_data_uri: str = f"s3://{app_config.storage.bucket_name}/{app_config.storage.files.raw_data}"
     print("raw_data_uri", raw_data_uri)
-    raw_data_pkl_uri: str = f"s3://{bucket_name}/{raw_data_pkl_path}"
+    raw_data_pkl_uri: str = f"s3://{app_config.storage.bucket_name}/{app_config.storage.files.raw_data_pkl}"
     print("raw_data_pkl_uri", raw_data_pkl_uri)
-    train_data_uri: str = f"s3://{bucket_name}/{train_data_path}"
+    train_data_uri: str = f"s3://{app_config.storage.bucket_name}/{app_config.storage.files.train_data}"
     print("train_data_uri", train_data_uri)
-
-    test_data_uri: str = f"s3://{bucket_name}/{test_data_path}"
+    test_data_uri: str = f"s3://{app_config.storage.bucket_name}/{app_config.storage.files.test_data}"
     print("test_data_uri", test_data_uri)
 
 
