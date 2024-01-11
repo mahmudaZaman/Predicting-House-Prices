@@ -1,0 +1,8 @@
+storage:
+  bucket_name: ml-projects-0509
+  files:
+    raw_data: Predicting-House-Prices/realest.csv
+    raw_data_pkl: Predicting-House-Prices/data.pkl
+    train_data: Predicting-House-Prices/train.csv
+    test_data: Predicting-House-Prices/test.csv
+

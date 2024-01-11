@@ -8,9 +8,11 @@ from components.data_ingestion import DataIngestion
 from components.data_transformation import DataTransformation
 from components.utility import get_root_directory
 
+
 @dataclass
 class ModelTrainerConfig:
     trained_model_file_path = os.path.join(get_root_directory(), "model.pkl")
+
 
 class ModelTrainer:
     def __init__(self):
@@ -42,21 +44,7 @@ def run_train_pipeline():
     train_data_path, test_data_path = obj.initiate_data_ingestion()
     print(train_data_path, test_data_path)
     data_transformation = DataTransformation()
-    X_train, y_train, X_test, y_test= data_transformation.initiate_data_transformation(train_data_path,
-                                                                                           test_data_path)
+    X_train, y_train, X_test, y_test = data_transformation.initiate_data_transformation(train_data_path,
+                                                                                        test_data_path)
     model_trainer = ModelTrainer()
     model_trainer.initiate_model_trainer(X_train, y_train, X_test, y_test)
-
-
-if __name__ == "__main__":
-    run_train_pipeline()
-    # data = CustomData(
-    #     gender="female",
-    #     race_ethnicity="group B",
-    #     parental_level_of_education="master's degree",
-    #     lunch="standard",
-    #     test_preparation_course="completed",
-    #     reading_score=62,
-    #     writing_score=82
-    # )
-    # run_predict_pipeline(data)
