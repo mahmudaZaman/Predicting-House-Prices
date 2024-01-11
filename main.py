@@ -1,16 +1,19 @@
 import os
 
+import s3fs
 import streamlit as st
 import pickle
 import numpy as np
 
 from components.models import run_train_pipeline
 
+fs = s3fs.S3FileSystem()
+
 
 def streamlit_run():
     # import the model
-    pipe = pickle.load(open("artifacts/model.pkl", "rb"))
-    df = pickle.load(open('artifacts/data.pkl', 'rb'))
+    pipe = pickle.load(fs.open("s3://ml-projects-0509/Predicting-House-Prices/model.pkl", "rb"))
+    df = pickle.load(fs.open("s3://ml-projects-0509/Predicting-House-Prices/data.pkl", 'rb'))
 
     st.title("House Price Predictor")
 

@@ -5,4 +5,5 @@ storage:
     raw_data_pkl: Predicting-House-Prices/data.pkl
     train_data: Predicting-House-Prices/train.csv
     test_data: Predicting-House-Prices/test.csv
+    model_pkl: Predicting-House-Prices/model.pkl
 

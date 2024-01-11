@@ -1,4 +1,3 @@
-import os
 import pickle
 from dataclasses import dataclass
 from sklearn.metrics import r2_score, mean_absolute_error
@@ -6,12 +5,22 @@ from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestRegressor
 from components.data_ingestion import DataIngestion
 from components.data_transformation import DataTransformation
-from components.utility import get_root_directory
+from config import Config
+import s3fs
+
+cfg = Config.load_config()
+storage_config = cfg["storage"]
+file_paths = storage_config["files"]
+bucket_name = storage_config["bucket_name"]
+
+fs = s3fs.S3FileSystem()
 
 
 @dataclass
 class ModelTrainerConfig:
-    trained_model_file_path = os.path.join(get_root_directory(), "model.pkl")
+    trained_model_path = file_paths["model_pkl"]
+    trained_model_uri: str = f"s3://{bucket_name}/{trained_model_path}"
+    # trained_model_file_path = os.path.join(get_root_directory(), "model.pkl")
 
 
 class ModelTrainer:
@@ -36,7 +45,12 @@ class ModelTrainer:
         y_pred = pipe.predict(X_test)
         print('R2 score', r2_score(y_test, y_pred))
         print('MAE', mean_absolute_error(y_test, y_pred))
-        pickle.dump(pipe, open(self.model_trainer_config.trained_model_file_path, 'wb'))
+        # pickle.dump(pipe, open(self.model_trainer_config.trained_model_file_path, 'wb'))
+
+        pickle.dump(pipe, fs.open(self.model_trainer_config.trained_model_uri, "wb"))
+
+        # with S3FS.open(self.model_trainer_config.trained_model_uri, 'wb') as file:
+        #     pickle.dump(pipe, file)
 
 
 def run_train_pipeline():

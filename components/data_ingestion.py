@@ -2,14 +2,11 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 from config import Config
-from fs_s3fs import S3FS
 
 cfg = Config.load_config()
 storage_config = cfg["storage"]
 file_paths = storage_config["files"]
 bucket_name = storage_config["bucket_name"]
-
-s3fs = S3FS(bucket_name)
 
 
 @dataclass
