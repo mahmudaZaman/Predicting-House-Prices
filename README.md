@@ -2,7 +2,7 @@
 
 ## Problem Statement
 
-The Predicting House Prices project is dedicated to creating a precise model for predicting house prices, utilizing critical features such as square Bedroom count, Living space etc. This initiative aims to empower homebuyers, real estate professionals, and investors by providing them with valuable insights, enabling them to make well-informed decisions in the realm of property transactions.
+The Predicting House Prices project is dedicated to creating a precise model for predicting house prices, utilizing critical features such as Bedroom count, Living space etc. This initiative aims to empower homebuyers, real estate professionals, and investors by providing them with valuable insights, enabling them to make well-informed decisions in the realm of property transactions.
 
 ## Dataset
 
@@ -14,11 +14,10 @@ This project involved a detailed Exploratory Data Analysis (EDA) of the "Chicago
 
 To enhance accessibility, a user-friendly House Prediction UI app was developed using Streamlit, leveraging the optimized RandomForest model. This app allows users to input key parameters and receive accurate predictions for house prices in Chicago suburbs, blending advanced machine learning with an intuitive interface for practical predictions.
 
-## AWS Integration
+## Amazon S3 for Data Management
 
-The Predicting House Prices project seamlessly integrates with Amazon Web Services (AWS) to leverage advanced tools and capabilities:
-
-- **Amazon S3 for Data Management**: The project efficiently stores and manages datasets in Amazon S3. This cloud-based storage solution guarantees data accessibility, scalability, and security.
+The project efficiently stores and manages datasets in Amazon S3. This cloud-based storage solution guarantees data accessibility, scalability, and security.
+Additionally, the trained model, serialized as a Pickle file, is stored on AWS S3. This not only streamlines model persistence but also facilitates its seamless integration into the Streamlit app. Loading the model directly from AWS S3 in the Streamlit app ensures real-time predictions with minimal latency.
 
 ## How to Get Started
 
